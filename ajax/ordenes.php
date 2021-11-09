@@ -50,14 +50,14 @@ case 'registrar_orden':
     $datos = $ordenes->validar_correlativo_orden($nuevo_correlativo);
     if(is_array($token_validate) == true and count($token_validate)==0 and is_array($datos) and count($datos)==0){ 
         for ($x = 0; $x < 1; $x++) {      
-    $ordenes->registrar_orden($nuevo_correlativo,$_POST['paciente'],$_POST['fecha_creacion'],$_POST['od_pupilar'],$_POST['oipupilar'],$_POST["odlente"],$_POST["oilente"],$_POST['marca_aro_orden'],$_POST['modelo_aro_orden'],$_POST['horizontal_aro_orden'],$_POST['vertical_aro_orden'],$_POST['puente_aro_orden'],$_POST["id_usuario"],$_POST["observaciones_orden"],$_POST["dui"],$_POST["od_esferas"],$_POST["od_cilindros"],$_POST["od_eje"],$_POST["od_adicion"],$_POST["oi_esferas"],$_POST["oi_cilindros"],$_POST["oi_eje"],$_POST["oi_adicion"],$_POST["tipo_lente"],$_POST["color_varilla"],$_POST["color_frente"],$_POST["imagen"],$_POST["edad"],$_POST["usuario"],$_POST["ocupacion"],$_POST["avsc"],$_POST["avfinal"],$_POST["avsc_oi"],$_POST["avfinal_oi"]);
+    $ordenes->registrar_orden($nuevo_correlativo,$_POST['paciente'],$_POST['fecha_creacion'],$_POST['od_pupilar'],$_POST['oipupilar'],$_POST["odlente"],$_POST["oilente"],$_POST['marca_aro_orden'],$_POST['modelo_aro_orden'],$_POST['horizontal_aro_orden'],$_POST['vertical_aro_orden'],$_POST['puente_aro_orden'],$_POST["id_usuario"],$_POST["observaciones_orden"],$_POST["dui"],$_POST["od_esferas"],$_POST["od_cilindros"],$_POST["od_eje"],$_POST["od_adicion"],$_POST["oi_esferas"],$_POST["oi_cilindros"],$_POST["oi_eje"],$_POST["oi_adicion"],$_POST["tipo_lente"],$_POST["color_varilla"],$_POST["color_frente"],$_POST["imagen"],$_POST["edad"],$_POST["usuario"],$_POST["ocupacion"],$_POST["avsc"],$_POST["avfinal"],$_POST["avsc_oi"],$_POST["avfinal_oi"],$_POST["telefono"]);
     $mensaje='exito'; 
   }}else{
     $mensaje ="existe";
   }
 
     }else{
-    $ordenes->editar_orden($_POST["correlativo_op"],$_POST["paciente"],$_POST["fecha_creacion"],$_POST["od_pupilar"],$_POST["oipupilar"],$_POST["odlente"],$_POST["oilente"],$_POST["marca_aro_orden"],$_POST["modelo_aro_orden"],$_POST["horizontal_aro_orden"],$_POST['vertical_aro_orden'],$_POST['puente_aro_orden'],$_POST["id_usuario"],$_POST["observaciones_orden"],$_POST["dui"],$_POST["od_esferas"],$_POST["od_cilindros"],$_POST["od_eje"],$_POST["od_adicion"],$_POST["oi_esferas"],$_POST["oi_cilindros"],$_POST["oi_eje"],$_POST["oi_adicion"],$_POST["tipo_lente"],$_POST["color_varilla"],$_POST["color_frente"],$_POST["categoria_lente"],$_POST["imagen"],$_POST["edad"],$_POST["usuario"],$_POST["ocupacion"],$_POST["avsc"],$_POST["avfinal"],$_POST["avsc_oi"],$_POST["avfinal_oi"]);
+    $ordenes->editar_orden($_POST["correlativo_op"],$_POST["paciente"],$_POST["fecha_creacion"],$_POST["od_pupilar"],$_POST["oipupilar"],$_POST["odlente"],$_POST["oilente"],$_POST["marca_aro_orden"],$_POST["modelo_aro_orden"],$_POST["horizontal_aro_orden"],$_POST['vertical_aro_orden'],$_POST['puente_aro_orden'],$_POST["id_usuario"],$_POST["observaciones_orden"],$_POST["dui"],$_POST["od_esferas"],$_POST["od_cilindros"],$_POST["od_eje"],$_POST["od_adicion"],$_POST["oi_esferas"],$_POST["oi_cilindros"],$_POST["oi_eje"],$_POST["oi_adicion"],$_POST["tipo_lente"],$_POST["color_varilla"],$_POST["color_frente"],$_POST["categoria_lente"],$_POST["imagen"],$_POST["edad"],$_POST["usuario"],$_POST["ocupacion"],$_POST["avsc"],$_POST["avfinal"],$_POST["avsc_oi"],$_POST["avfinal_oi"],$_POST["telefono"]);
     $mensaje="error";
   }
     echo json_encode($mensaje);
@@ -475,6 +475,7 @@ case 'listar_ordenes_enviar':
       "iTotalDisplayRecords"=>count($data), //enviamos el total registros a visualizar
       "aaData"=>$data);
     echo json_encode($results);
+    
   break;
 
   ////////////////////////ORDENES PROCESANDO /////////////////
@@ -496,14 +497,14 @@ case 'listar_ordenes_enviar':
         $oi_add = ($row["oi_adicion"]=="-" or $row["oi_adicion"]=="")? '': "<span style='color:blue'>Add. </span>".$row["oi_adicion"];
         ///////////////////////////   
         $sub_array = array();
-    $sub_array[] = $row["id_orden"];  
-    $sub_array[] = $row["fecha"];
-    $sub_array[] = "<span style='font-size:11px' data-toggle='tooltip' title='Fecha recibido: ".$row["fecha"]."'>".strtoupper($row["paciente"])."</span>";
-    $sub_array[] = $od_esferas." ".$od_cilindro." ".$od_eje." ".$od_add;
-    $sub_array[] = $oi_esferas." ".$oi_cilindro." ".$oi_eje." ".$oi_add;
-    $sub_array[] = $row["tipo_lente"];
-    $sub_array[] = $row["laboratorio"];   
-      $data[] = $sub_array;
+        $sub_array[] = $row["id_orden"];  
+        $sub_array[] = $row["fecha"];
+        $sub_array[] = "<span style='font-size:11px' data-toggle='tooltip' title='Fecha recibido: ".$row["fecha"]."'>".strtoupper($row["paciente"])."</span>";
+        $sub_array[] = $od_esferas." ".$od_cilindro." ".$od_eje." ".$od_add;
+        $sub_array[] = $oi_esferas." ".$oi_cilindro." ".$oi_eje." ".$oi_add;
+        $sub_array[] = $row["tipo_lente"];
+        $sub_array[] = $row["laboratorio"];   
+        $data[] = $sub_array;
   }
   
   $results = array(

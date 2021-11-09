@@ -50,7 +50,7 @@ case 'get_ordenes':
   $sub_array[] = $row["puente_aro"];
   $sub_array[] = $row["cantidad"];
   $sub_array[] = '<i class="fa fa-image" aria-hidden="true" style="color:blue" onClick="verImagen(\''.$row["img"].'\',\''.$row["modelo_aro"].'\',\''.$row["horizontal_aro"].'\',\''.$row["vertical_aro"].'\',\''.$row["puente_aro"].'\')"></i></button>';  
-    $data[] = $sub_array;
+  $data[] = $sub_array;
   }
   
   $results = array(

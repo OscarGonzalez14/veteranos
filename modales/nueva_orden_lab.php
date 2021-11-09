@@ -16,7 +16,7 @@
             <div class="modal-body"><!--START MODAL BODY-->  
              
              <div class="row">
-               <div class="col-sm-6">
+               <div class="col-sm-5">
                  <label for="" class="etiqueta">Paciente</label>
                 <input type="text" class="form-control clear_orden_i" id="paciente">
                </div>
@@ -25,9 +25,14 @@
                 <input type="text" class="form-control clear_orden_i" id="dui_pac">
                </div>
 
-              <div class="col-sm-3">
+              <div class="col-sm-2">
                  <label for="" class="etiqueta">Edad</label>
                 <input type="text" class="form-control clear_orden_i" id="edad_pac">
+               </div>
+
+              <div class="col-sm-2">
+                 <label for="" class="etiqueta">Telef.</label>
+                 <input type="text" class="form-control clear_orden_i" id="telef_pac">
                </div>
 
               <div class="col-sm-4">

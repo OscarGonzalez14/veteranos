@@ -169,6 +169,7 @@ function guardar_orden(){
   let avfinal = $("#avfinal").val();
   let avsc_oi = $("#avsc_oi").val();
   let avfinal_oi= $("#avfinal_oi").val();
+  let telefono = $("#telef_pac").val();
 
 
  if(paciente==""){
@@ -230,7 +231,8 @@ function guardar_orden(){
     horizontal_aro_orden:horizontal_aro_orden,vertical_aro_orden:vertical_aro_orden,puente_aro_orden:puente_aro_orden,
     id_usuario:id_usuario,observaciones_orden:observaciones_orden,dui:dui,od_esferas:od_esferas,od_cilindros:od_cilindros,
     od_eje:od_eje,od_adicion:od_adicion,oi_esferas:oi_esferas,oi_cilindros:oi_cilindros,oi_eje:oi_eje,oi_adicion:oi_adicion,
-    tipo_lente:tipo_lente,color_varilla:color_varilla,color_frente:color_frente,imagen:imagen,validate:validate,categoria_lente:categoria_lente,edad:edad,usuario:usuario,ocupacion:ocupacion,avsc:avsc,avfinal:avfinal,avsc_oi:avsc_oi,avfinal_oi:avfinal_oi},
+    tipo_lente:tipo_lente,color_varilla:color_varilla,color_frente:color_frente,imagen:imagen,validate:validate,categoria_lente:categoria_lente,
+    edad:edad,usuario:usuario,ocupacion:ocupacion,avsc:avsc,avfinal:avfinal,avsc_oi:avsc_oi,avfinal_oi:avfinal_oi,telefono:telefono},
     cache: false,
     dataType:"json",
    
@@ -306,14 +308,14 @@ function verEditar(codigo,paciente){
   }
 
   $("#nueva_orden_lab").modal('show');
-    clear_attr();
-    $.ajax({
-      url:"../ajax/ordenes.php?op=get_data_orden",
-      method:"POST",
-      cache:false,
-      data:{codigo:codigo,paciente:paciente},
-      dataType:"json",
-      success:function(data){
+      clear_attr();
+      $.ajax({
+        url:"../ajax/ordenes.php?op=get_data_orden",
+        method:"POST",
+        cache:false,
+        data:{codigo:codigo,paciente:paciente},
+        dataType:"json",
+        success:function(data){
   
        $("#correlativo_op").html(data.codigo);
        $("#paciente").val(data.paciente);

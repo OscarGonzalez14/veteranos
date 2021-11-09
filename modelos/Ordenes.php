@@ -63,7 +63,7 @@ require_once("../config/conexion.php");
     barcode('../codigos/' . $codigo . '.png', $codigo, 50, 'horizontal', 'code128', true);
   }
   /////////////   REGISTRAR ORDEN ///////////////////////////////
-  public function registrar_orden($correlativo_op,$paciente,$fecha_creacion,$od_pupilar,$oipupilar,$odlente,$oilente,$marca_aro_orden,$modelo_aro_orden,$horizontal_aro_orden,$vertical_aro_orden,$puente_aro_orden,$id_usuario,$observaciones_orden,$dui,$od_esferas,$od_cilindros,$od_eje,$od_adicion,$oi_esferas,$oi_cilindros,$oi_eje,$oi_adicion,$tipo_lente,$color_varilla,$color_frente,$imagen,$edad,$usuario,$ocupacion,$avsc,$avfinal,$avsc_oi,$avfinal_oi){
+  public function registrar_orden($correlativo_op,$paciente,$fecha_creacion,$od_pupilar,$oipupilar,$odlente,$oilente,$marca_aro_orden,$modelo_aro_orden,$horizontal_aro_orden,$vertical_aro_orden,$puente_aro_orden,$id_usuario,$observaciones_orden,$dui,$od_esferas,$od_cilindros,$od_eje,$od_adicion,$oi_esferas,$oi_cilindros,$oi_eje,$oi_adicion,$tipo_lente,$color_varilla,$color_frente,$imagen,$edad,$usuario,$ocupacion,$avsc,$avfinal,$avsc_oi,$avfinal_oi,$telefono){
 
     $conectar = parent::conexion();
     date_default_timezone_set('America/El_Salvador'); 
@@ -73,7 +73,7 @@ require_once("../config/conexion.php");
     $laboratorio = "";
     $estado_aro = '0';
     $dest_aro = '0';
-    $sql = "insert into orden_lab values (null,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
+    $sql = "insert into orden_lab values (null,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);";
     $sql = $conectar->prepare($sql);
     $sql->bindValue(1, $correlativo_op);
     $sql->bindValue(2, $paciente);
@@ -107,6 +107,7 @@ require_once("../config/conexion.php");
     $sql->bindValue(30, $avfinal);
     $sql->bindValue(31, $avsc_oi);
     $sql->bindValue(32, $avfinal_oi);
+    $sql->bindValue(33, $telefono);
     $sql->execute();
 
     $sql2 = "insert into rx_orden_lab value(null,?,?,?,?,?,?,?,?,?);";

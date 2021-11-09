@@ -16,6 +16,7 @@ if(isset($_SESSION["usuario"])){
  $base = $_POST["base"];
  $inicio = $_POST["inicio"];
  $fin = $_POST["fin"];
+ 
  if($tipo_lente=="Flaptop" or $tipo_lente=="Progresive"){
   $table_report = $tablas->flaptop_progresive($inicio,$fin,$laboratorio,$tipo_lente,$base);
 }elseif($tipo_lente=="Visión Sencilla"){

@@ -3,7 +3,7 @@
   require_once("../config/conexion.php");
   
 
-   class Ordenes extends Conectar{
+   class Ordenes extends Conectar{    
    ///////////////////////AGRUPA AROS //////////////
    public function get_ordenes(){
     $conectar= parent::conexion();
@@ -11,6 +11,7 @@
     $sql=$conectar->prepare($sql);
     $sql->execute();
     return $resultado= $sql->fetchAll(PDO::FETCH_ASSOC);
+
     }
 
 
@@ -66,14 +67,13 @@
     $accion = "Recibido";
     foreach ($detail_received as $value) {
       $codigoOrden = $value;
-
-      /////////////////Validar si existe orden en tabla acciones
+      /////////////////   VALIDAR    //////////////
       $sql2 = "select codigo from acciones_orden where codigo=? and tipo_accion='';";
       $sql2=$conectar->prepare($sql2);
       $sql2->bindValue(1, $codigoOrden);
       $sql2->execute();
       $resultado = $sql2->fetchAll(PDO::FETCH_ASSOC);
-      ############REGISTRAR ACCION#############
+      ############   REGISTRAR ACCION   #############
       if(is_array($resultado)==true and count($resultado)==0){
         $sql3 = "update orden_lab set estado='2' where codigo=?;";
         $sql3=$conectar->prepare($sql3);
@@ -91,8 +91,7 @@
       }
       
     }//////////////FIN FOREACH 
-
-    }
+  }
 
     public function sendAros($modelo,$horizontal,$vertical,$puente,$cantidad,$dest_aro){
 
