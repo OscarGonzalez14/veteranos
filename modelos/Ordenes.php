@@ -125,7 +125,7 @@ require_once("../config/conexion.php");
 
   }
    ////////////////////LISTAR ORDENES///////////////
-public function editar_orden($correlativo_op,$paciente,$fecha_creacion,$od_pupilar,$oipupilar,$odlente,$oilente,$marca_aro_orden,$modelo_aro_orden,$horizontal_aro_orden,$vertical_aro_orden,$puente_aro_orden,$id_usuario,$observaciones_orden,$dui,$od_esferas,$od_cilindros,$od_eje,$od_adicion,$oi_esferas,$oi_cilindros,$oi_eje,$oi_adicion,$tipo_lente,$color_varilla,$color_frente,$categoria_lente,$imagen,$edad,$usuario,$ocupacion,$avsc,$avfinal,$avsc_oi,$avfinal_oi){
+public function editar_orden($correlativo_op,$paciente,$fecha_creacion,$od_pupilar,$oipupilar,$odlente,$oilente,$marca_aro_orden,$modelo_aro_orden,$horizontal_aro_orden,$vertical_aro_orden,$puente_aro_orden,$id_usuario,$observaciones_orden,$dui,$od_esferas,$od_cilindros,$od_eje,$od_adicion,$oi_esferas,$oi_cilindros,$oi_eje,$oi_adicion,$tipo_lente,$color_varilla,$color_frente,$categoria_lente,$imagen,$edad,$usuario,$ocupacion,$avsc,$avfinal,$avsc_oi,$avfinal_oi,$telefono){
   $conectar = parent::conexion();
   $edit_ord = "update orden_lab set
     paciente = ?,
@@ -151,7 +151,8 @@ public function editar_orden($correlativo_op,$paciente,$fecha_creacion,$od_pupil
     avsc =?,
     avfinal =?,
     avsc_oi=?,
-    avfinal_oi=?
+    avfinal_oi=?,
+    telefono = ?
 
 
 
@@ -182,7 +183,8 @@ public function editar_orden($correlativo_op,$paciente,$fecha_creacion,$od_pupil
   $edit_ord->bindValue(22, $avfinal);
   $edit_ord->bindValue(23, $avsc_oi);
   $edit_ord->bindValue(24, $avfinal_oi);
-  $edit_ord->bindValue(25, $correlativo_op);
+  $edit_ord->bindValue(25, $telefono);
+  $edit_ord->bindValue(26, $correlativo_op);
 
   $edit_ord->execute();
 
@@ -232,7 +234,7 @@ public function editar_orden($correlativo_op,$paciente,$fecha_creacion,$od_pupil
   public function get_data_orden($codigo,$paciente){
 
     $conectar = parent::conexion();
-    $sql = "select o.laboratorio,o.categoria,o.codigo,o.paciente,o.fecha,o.pupilar_od,o.pupilar_oi,o.lente_od,o.lente_oi,o.marca_aro,o.modelo_aro,o.horizontal_aro,o.vertical_aro,o.puente_aro,o.id_usuario,o.observaciones,o.dui,o.estado,o.tipo_lente,rx.od_esferas,rx.od_cilindros,rx.od_eje,rx.od_adicion,rx.oi_esferas,rx.oi_cilindros,rx.oi_eje,rx.oi_adicion,o.color_varilla,o.color_frente,o.img,o.dui,o.edad,o.usuario_lente,o.ocupacion,o.avsc,o.avfinal,o.avsc_oi,o.avfinal_oi from
+    $sql = "select o.telefono,o.laboratorio,o.categoria,o.codigo,o.paciente,o.fecha,o.pupilar_od,o.pupilar_oi,o.lente_od,o.lente_oi,o.marca_aro,o.modelo_aro,o.horizontal_aro,o.vertical_aro,o.puente_aro,o.id_usuario,o.observaciones,o.dui,o.estado,o.tipo_lente,rx.od_esferas,rx.od_cilindros,rx.od_eje,rx.od_adicion,rx.oi_esferas,rx.oi_cilindros,rx.oi_eje,rx.oi_adicion,o.color_varilla,o.color_frente,o.img,o.dui,o.edad,o.usuario_lente,o.ocupacion,o.avsc,o.avfinal,o.avsc_oi,o.avfinal_oi from
       orden_lab as o inner join rx_orden_lab as rx on o.codigo=rx.codigo where o.codigo = ? and rx.codigo = ? and o.paciente=?;";
     $sql=$conectar->prepare($sql);
     $sql->bindValue(1,$codigo);

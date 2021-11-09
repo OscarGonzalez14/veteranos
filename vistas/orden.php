@@ -125,6 +125,12 @@ require_once("links_js.php");
   blocks: [8,1],
   uppercase : true
 });
+
+var telefono = new Cleave('#telef_pac', {
+  delimiter: '-',
+  blocks: [4,4],
+  uppercase : true
+});
 </script>
 </body>
 </html>

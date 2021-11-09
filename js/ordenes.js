@@ -350,6 +350,7 @@ function verEditar(codigo,paciente){
        $("#avfinal").val(data.avfinal);
        $("#avsc_oi").val(data.avsc_oi);
        $("#avfinal_oi").val(data.avfinal_oi);
+       $("#telef_pac").val(data.telefono);
 
        let imagen = data.img;
        document.getElementById("imagen_aro").src="images/"+imagen;

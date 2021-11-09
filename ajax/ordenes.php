@@ -181,6 +181,7 @@ case 'get_ordenes_dig':
       $output['avfinal'] = $row['avfinal'];
       $output['avsc_oi'] = $row['avsc_oi'];
       $output['avfinal_oi'] = $row['avfinal_oi'];
+      $output['telefono'] = $row['telefono'];
         
     
       }

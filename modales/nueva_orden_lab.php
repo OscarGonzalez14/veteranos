@@ -34,7 +34,7 @@
                  <label for="" class="etiqueta">Telef.</label>
                  <input type="text" class="form-control clear_orden_i" id="telef_pac">
                </div>
-
+<!--Hola-->
               <div class="col-sm-4">
                  <label for="" class="etiqueta">Usuario lente</label>
                 <select class="form-control" id="usuario_pac">
@@ -108,8 +108,7 @@
                       </td>
                         <td> <input type="text" class="form-control clear_orden_i"  id="oicilindrosf"   style="text-align: center"></td>
                         <td> <input type="text" class="form-control clear_orden_i"  id="oiejesf"   style="text-align: center"></td>              
-                        <td> <input type="text" class="form-control clear_orden_i"  id="oiadicionf"  style="text-align: center"></td>
-    
+                        <td> <input type="text" class="form-control clear_orden_i"  id="oiadicionf"  style="text-align: center"></td>    
                       </tr>
                     </tbody>
                   </table>
