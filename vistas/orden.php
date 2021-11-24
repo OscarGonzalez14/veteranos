@@ -67,6 +67,7 @@ $categoria_usuario = $_SESSION["categoria"];
            <th>Fecha</th>
            <th>Paciente</th>
            <th>DUI</th>
+           <th>Telefono</th>
            <th>Tipo lente</th>
            <th>Ver y Editar</th>
            <th>Eliminar</th>
