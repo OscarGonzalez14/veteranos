@@ -29,9 +29,7 @@ $categoria_usuario = $_SESSION["categoria"];
 <div class="wrapper">
 <!-- top-bar -->
   <?php require_once('top_menu.php')?>
-  <!-- /.top-bar -->
 
-  <!-- Main Sidebar Container -->
   <?php require_once('side_bar.php')?>
   <!--End SideBar Container-->
   <!-- Content Wrapper. Contains page content -->
@@ -42,42 +40,55 @@ $categoria_usuario = $_SESSION["categoria"];
       <input type="hidden" name="usuario" id="usuario" value="<?php echo $_SESSION["usuario"];?>"/>
       <input type="hidden" name="categoria" id="get_categoria" value="<?php echo $_SESSION["categoria"];?>"/>
       <div style="border-top: 0px">
-      <!--<a class="btn btn-app bg-info btn-sm btn-flat" data-toggle="modal" data-target="#nueva_orden_lab" onClick='get_numero_orden();' style="border-radius: 5px;margin:2px;">
-            <i class="fas fa-glasses"></i> Crear orden
-        </a>-->
       </div>
-      <button class="btn btn-outline-primary btn-sm btn-flat" data-toggle="modal" data-target="#nueva_orden_lab" onClick='get_numero_orden();' id="order_new"><i class="fa fa-glasses" style="margin-top: 2px"> Crear Orden</i></button>
-      <div class="row">
+
+      <div class="card-body" style="margin: 1px solid red;color: black !important">
+        <a href="pend_lab.php.php" class="btn btn-app" style="color: black;border: solid #5bc0de 1px;">
+          <span class="badge bg-warning" id="alert_creadas_ord"></span>
+          <i class="fas fa-history" style="color: #f0ad4e"></i> PENDIENTES
+        </a>
+
+        <a href="procesando_lentes.php" class="btn btn-app" style="color: black;border: solid #5bc0de 1px;">
+          <span class="badge bg-info" id="alert_enviadas_ord"></span>
+          <i class="fas fa-cog" style="color: #0275d8"></i> PROCESANDO
+        </a>
+
+        <a href="enviadas.php" class="btn btn-app" style="color: black;border: solid #5bc0de 1px;">
+          <span class="badge bg-success" id="alert_recibidos_ord"></span>
+          <i class="fas fa-location-arrow" style="color: #5cb85c"></i> ENVIADAS
+        </a>
+      </div>
+
+      <div class="form-row">
          <div class="col-sm-3"></div>
-         <div class="col-sm-3"></div>
          <div class="col-sm-2" style="text-align: right;display: flex;align-items: right">
-           <input type="date" class="form-control clear_orden_i" id="desde_orders" placeholder="desde">
+           <input type="date" class="form-control clear_orden_i" id="desde_orders_lab_pend" placeholder="desde">
          </div>
-         <div class="col-sm-2" style="text-align: right;display: flex;align-items: right">
-          <input type="date" class="form-control clear_orden_i" id="hasta_orders" placeholder="desde">
+         <div class="col-sm-2 form-group" style="text-align: right;display: flex;align-items: right">
+          <input type="date" class="form-control clear_orden_i" id="hasta_orders_lab_pend" placeholder="desde">
          </div>
-         <div class="col-sm-2" style="text-align: right;display: flex;align-items: right">
-           <button class="btn btn-light"><i class="fas fa-search" style="color: green;cursor:pointer;margin-top: 4px" onClick="listar_ordenes_digitadasfecha()"></i></button>
+         <div class="col-sm-2 form-group" style="text-align: right;display: flex;align-items: right">
+           <button class="btn btn-primary"><i class="fas fa-search" style="cursor:pointer;margin-top: 4px" onClick="listar_ordenes_pend_lab()"></i></button>
+         </div>
+         <div class="col-sm-2">
+         <button class="btn btn-info"><i class="fas fa-download"></i> Recibir</button>
          </div>
        </div>
-      <div class="card card-dark card-outline" style="margin: 2px;">
-       <table width="100%" class="table-hover table-bordered" id="datatable_ordenes"  data-order='[[ 0, "desc" ]]'>        
+
+        <table width="100%" class="table-hover table-bordered" id="ordenes_pendientes_lab"  data-order='[[ 0, "desc" ]]'>        
          <thead class="style_th bg-dark" style="color: white">
            <th>ID</th>
+           <th>Codigo</th>
            <th>Fecha</th>
+           <th>Recibir</th>
            <th>Paciente</th>
-           <th>DUI</th>
-           <th>Telefono</th>
            <th>Tipo lente</th>
-           <th>Ver y Editar</th>
-           <th>Eliminar</th>
+           <th>Detalles</th>
+           <th>Aro</th>
          </thead>
          <tbody class="style_th"></tbody>
        </table>
-     
-      </div>
 
-      </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
   </div>
@@ -86,7 +97,7 @@ $categoria_usuario = $_SESSION["categoria"];
 
    <!--Modal Imagen Aro-->
    <div class="modal" id="imagen_aro_orden">
-    <div class="modal-dialog" style="max-width: 45%">
+    <div class="modal-dialog" style="max-width: 55%">
       <div class="modal-content">
       
         <!-- Modal Header -->
@@ -96,8 +107,9 @@ $categoria_usuario = $_SESSION["categoria"];
         
         <!-- Modal body -->
         <div class="modal-body">
+          <span id="cod_orden_lab"></span>&nbsp;&nbsp;&nbsp;<span id="paciente_ord_lab"></span>
           <div style="  background-size: cover;background-position: center;display:flex;align-items: center;">
-            <img src="" alt="" id="imagen_aro" style="width: 100%;border-radius: 8px;">
+            <img src="" alt="" id="imagen_aro_v" style="width: 100%;border-radius: 8px;">
           </div>          
         </div>        
    
@@ -118,9 +130,8 @@ $categoria_usuario = $_SESSION["categoria"];
 <?php 
 require_once("links_js.php");
 ?>
-<script type="text/javascript" src="../js/ordenes.js"></script>
-<script type="text/javascript" src="../js/productos.js"></script>
-<script type="text/javascript" src="../js/cleave.js"></script>
+<script type="text/javascript" src="../js/laboratorios.js"></script>
+
 <script>
   var dui = new Cleave('#dui_pac', {
   delimiter: '-',

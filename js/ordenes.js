@@ -300,11 +300,18 @@ function verEditar(codigo,paciente){
   $("#validate").val("1");
   let categoria = $("#get_categoria").val();
   
-  if(categoria != 3){
+  /*if(categoria != 3){
     document.getElementById("buscar_aro").style.display = "none";
     document.getElementById("mostrar_imagen").style.display = "none";
   }else if(categoria==1 || categoria==3){
     document.getElementById("mostrar_imagen").style.display = "flex";
+  }*/
+  if (categoria=='a') {
+   let disable_inputs = document.getElementsByClassName('rx_f');
+    for(i=0;i<disable_inputs.length;i++){
+      let id_element = disable_inputs[i].id;
+      document.getElementById(id_element).readOnly = true;
+   }
   }
 
   $("#nueva_orden_lab").modal('show');
@@ -493,7 +500,7 @@ function listar_ordenes_digitadas(filter){
         "bDestroy": true,
         "responsive": true,
         "bInfo":true,
-        "iDisplayLength": 30,//Por cada 10 registros hace una paginación
+        "iDisplayLength": 25,//Por cada 10 registros hace una paginación
           "order": [[ 0, "desc" ]],//Ordenar (columna,orden)
 
             "language": {

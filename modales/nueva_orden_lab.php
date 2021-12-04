@@ -96,19 +96,19 @@
                     <tbody>
                       <tr>
                         <td>OD</td>
-                        <td> <input type="text" class="form-control clear_orden_i"  id="odesferasf"  style="text-align: center"></td>
-                        <td> <input type="text" class="form-control clear_orden_i"  id="odcilindrosf"  style="text-align: center"></td>
-                        <td> <input type="text" class="form-control clear_orden_i"  id="odejesf"  style="text-align: center"></td>             
-                       <td> <input type="text" class="form-control clear_orden_i"  id="oddicionf"  style="text-align: center"></td>
+                        <td> <input type="text" class="form-control clear_orden_i rx_f"  id="odesferasf"  style="text-align: center"></td>
+                        <td> <input type="text" class="form-control clear_orden_i rx_f"  id="odcilindrosf"  style="text-align: center"></td>
+                        <td> <input type="text" class="form-control clear_orden_i rx_f"  id="odejesf"  style="text-align: center"></td>             
+                       <td> <input type="text" class="form-control clear_orden_i rx_f"  id="oddicionf"  style="text-align: center"></td>
               
                       </tr>
                       <tr>
                         <td>OI</td>
-                        <td> <input type="text" class="form-control clear_orden_i"  id="oiesferasf"   style="text-align: center">                        
+                        <td> <input type="text" class="form-control clear_orden_i rx_f"  id="oiesferasf"   style="text-align: center">                        
                       </td>
-                        <td> <input type="text" class="form-control clear_orden_i"  id="oicilindrosf"   style="text-align: center"></td>
-                        <td> <input type="text" class="form-control clear_orden_i"  id="oiejesf"   style="text-align: center"></td>              
-                        <td> <input type="text" class="form-control clear_orden_i"  id="oiadicionf"  style="text-align: center"></td>    
+                        <td> <input type="text" class="form-control clear_orden_i rx_f"  id="oicilindrosf"   style="text-align: center"></td>
+                        <td> <input type="text" class="form-control clear_orden_i rx_f"  id="oiejesf"   style="text-align: center"></td>              
+                        <td> <input type="text" class="form-control clear_orden_i rx_f"  id="oiadicionf"  style="text-align: center"></td>    
                       </tr>
                     </tbody>
                   </table>
