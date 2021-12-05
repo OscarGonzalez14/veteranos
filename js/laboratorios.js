@@ -1,3 +1,21 @@
+  $(".modal-header").on("mousedown", function(mousedownEvt) {
+    let $draggable = $(this);
+    let x = mousedownEvt.pageX - $draggable.offset().left,
+        y = mousedownEvt.pageY - $draggable.offset().top;
+    $("body").on("mousemove.draggable", function(mousemoveEvt) {
+    $draggable.closest(".modal-dialog").offset({
+    "left": mousemoveEvt.pageX - x,
+      "top": mousemoveEvt.pageY - y
+    });
+    });
+    $("body").one("mouseup", function() {
+      $("body").off("mousemove.draggable");
+    });
+    $draggable.closest(".modal").one("bs.modal.hide", function() {
+        $("body").off("mousemove.draggable");
+    });
+  });
+
 function listar_ordenes_pend_lab(){
 
   let inicio = $("#desde_orders_lab_pend").val();
@@ -87,3 +105,59 @@ function listar_ordenes_pend_lab(){
   $("#cod_orden_lab").html(codigo);
   $("#paciente_ord_lab").html(paciente);
  }
+
+
+/**************************
+  ARREGLO ORDENES RECIBIR
+***************************/
+var ordenes_recibir = [];
+$(document).on('click', '.ordenes_recibir_lab', function(){
+  let id_orden = $(this).attr("value");
+  let id_item = $(this).attr("id");
+
+  let checkbox = document.getElementById(id_item);
+  let check_state = checkbox.checked;
+
+  if (check_state) {
+    let obj = {
+      id_orden : id_orden
+    }
+    ordenes_recibir.push(obj);
+  }else{
+    let indice = ordenes_recibir.findIndex((objeto, indice, ordenes_recibir) =>{
+      return objeto.id_orden == id_orden
+    });
+    ordenes_recibir.splice(indice,1)
+  }
+  
+});
+
+
+function recibirOrdenesLab(){
+  let count = ordenes_recibir.length;
+  if (count==0) {
+    Swal.fire({
+      position: 'top-center',
+      icon: 'error',
+      title: 'Orden de recibidos vacio',
+      showConfirmButton: true,
+      timer: 2500
+    });
+  return false
+  }
+
+ $("#count_select").html(count);
+ $("#modal_ingreso_lab").modal('show');
+  console.log(ordenes_recibir);
+  orders = []; 
+  for(var i=0;i<ordenes_recibir.length;i++){
+    orders.push(ordenes_recibir[i].id_orden);
+  }
+}
+
+function confirmarIngresoLab(){
+  
+  let fecha_ini = $("#desde_orders_lab_pend").val();
+  let fecha_fin = $("#hasta_orders_lab_pend").val();
+  window.open('ordenes_recibir_pdf.php?orders='+orders+'&inicio='+fecha_ini+'&fecha_fin='+fecha_fin, '_blank');
+}

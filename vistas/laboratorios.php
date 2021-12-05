@@ -71,7 +71,7 @@ $categoria_usuario = $_SESSION["categoria"];
            <button class="btn btn-primary"><i class="fas fa-search" style="cursor:pointer;margin-top: 4px" onClick="listar_ordenes_pend_lab()"></i></button>
          </div>
          <div class="col-sm-2">
-         <button class="btn btn-info"><i class="fas fa-download"></i> Recibir</button>
+         <button class="btn btn-info" onClick="recibirOrdenesLab();"><i class="fas fa-download"></i> Recibir</button>
          </div>
        </div>
 
@@ -96,7 +96,7 @@ $categoria_usuario = $_SESSION["categoria"];
   <input type="hidden" value="<?php echo $categoria_usuario;?>" id="cat_users">
 
    <!--Modal Imagen Aro-->
-   <div class="modal" id="imagen_aro_orden">
+   <div class="modal" id="modal_recibir_aros">
     <div class="modal-dialog" style="max-width: 55%">
       <div class="modal-content">
       
@@ -107,7 +107,7 @@ $categoria_usuario = $_SESSION["categoria"];
         
         <!-- Modal body -->
         <div class="modal-body">
-          <span id="cod_orden_lab"></span>&nbsp;&nbsp;&nbsp;<span id="paciente_ord_lab"></span>
+          <span><b>Código: </b></span><span id="cod_orden_lab"></span>&nbsp;&nbsp;&nbsp;<span><b>Paciente: </b></span><span id="paciente_ord_lab"></span>
           <div style="  background-size: cover;background-position: center;display:flex;align-items: center;">
             <img src="" alt="" id="imagen_aro_v" style="width: 100%;border-radius: 8px;">
           </div>          
@@ -116,6 +116,27 @@ $categoria_usuario = $_SESSION["categoria"];
       </div>
     </div>
   </div>
+
+
+   <!--Modal Ingreso a laboratorio-->
+   <div class="modal" id="modal_ingreso_lab" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog" style="max-width: 35%">
+      <div class="modal-content">       
+        <!-- Modal body -->
+        <div class="modal-body">
+          <b><h5 style="font-size: 18px;text-align: center">ORDENES RECIBIDAS EN LABORATORIO</h5></b>
+          <b><h5 style="font-size: 14px;text-align: center">Confirmar que recibe <span id="count_select"></span> ordenes.</h5></b>
+          
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-danger">Cancelar</button>
+        <button type="button" class="btn btn-primary" onClick='confirmarIngresoLab();'><i class="fas fa-print"></i> Recibir</button>
+      </div>        
+   
+      </div>
+    </div>
+  </div>
+
   <!-- /.content-wrapper -->
   <footer class="main-footer">
     <strong>2021 Lenti || <b>Version</b> 1.0</strong>

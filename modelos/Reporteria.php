@@ -123,7 +123,16 @@ public function print_orden($codigo){
     return $tabla;
 }
 
-
+public function get_ordenes_recibir_lab($codigo){
+  $conectar= parent::conexion();
+  parent::set_names();
+  $sql = "select*from orden_lab where codigo=?;";
+  $sql=$conectar->prepare($sql);
+  $sql->bindValue(1,$codigo);
+  $sql->execute();
+  return $resultado= $sql->fetchAll(PDO::FETCH_ASSOC);
 }
-?>
+
+}///FIN DE LA CLASE
+
 

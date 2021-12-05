@@ -27,7 +27,7 @@
 
               <div class="col-sm-2">
                  <label for="" class="etiqueta">Edad</label>
-                <input type="text" class="form-control clear_orden_i" id="edad_pac">
+                <input type="search" class="form-control clear_orden_i" id="edad_pac">
                </div>
 
               <div class="col-sm-2">

@@ -1255,8 +1255,7 @@ function imprimir_ordenes(){
         timer: 2500
       });
 
-      $("#data_ordenes_env").DataTable().ajax.reload();
-     
+      $("#data_ordenes_env").DataTable().ajax.reload();     
       window.open('imp_orden.php?orders='+orders, '_blank');
     }
   });//fin ajax
