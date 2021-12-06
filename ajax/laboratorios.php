@@ -19,7 +19,7 @@ case 'get_ordenes_pendientes_lab':
   $sub_array[] = $row["id_orden"];
   $sub_array[] = $row["codigo"];  
   $sub_array[] = date("d-m-Y",strtotime($row["fecha"]));
-   $sub_array[] = '<input type="checkbox"class="form-check-input ordenes_recibir_lab" value="'.$row["codigo"].'" name="'.$row["paciente"].'" id="orden_env'.$i.'">'."Rec.".'';
+   $sub_array[] = '<input type="checkbox"class="form-check-input ordenes_recibir_lab" value="'.$row["id_orden"].'" name="'.$row["codigo"].'" id="orden_env'.$i.'">'."Rec.".'';
   $sub_array[] = strtoupper($row["paciente"]);
   $sub_array[] = $row["tipo_lente"];
   $sub_array[] = '<button type="button"  class="btn btn-sm bg-light" onClick="verEditar(\''.$row["codigo"].'\',\''.$row["paciente"].'\')"><i class="fa fa-eye" aria-hidden="true" style="color:blue"></i></button>';  
@@ -35,4 +35,11 @@ case 'get_ordenes_pendientes_lab':
       "aaData"=>$data);
     echo json_encode($results);
   break;
+
+  case 'recibir_ordenes_laboratorio':
+    $ordenes->recibirOrdenesLab();
+    $mensaje = "Ok";
+  echo json_encode($mensaje);    
+  break;
+
 }

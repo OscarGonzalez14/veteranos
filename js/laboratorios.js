@@ -45,7 +45,7 @@ function listar_ordenes_pend_lab(){
         "iDisplayLength": 30,//Por cada 10 registros hace una paginación
           "order": [[ 0, "desc" ]],//Ordenar (columna,orden)
 
-            "language": {
+          "language": {
  
           "sProcessing":     "Procesando...",
        
@@ -114,13 +114,15 @@ var ordenes_recibir = [];
 $(document).on('click', '.ordenes_recibir_lab', function(){
   let id_orden = $(this).attr("value");
   let id_item = $(this).attr("id");
+  let codigo = $(this).attr("name");
 
   let checkbox = document.getElementById(id_item);
   let check_state = checkbox.checked;
 
   if (check_state) {
     let obj = {
-      id_orden : id_orden
+      id_orden : id_orden,
+      codigo : codigo
     }
     ordenes_recibir.push(obj);
   }else{
@@ -129,11 +131,22 @@ $(document).on('click', '.ordenes_recibir_lab', function(){
     });
     ordenes_recibir.splice(indice,1)
   }
-  
+  orders = []; 
+  for(var i=0;i<ordenes_recibir.length;i++){
+    orders.push(ordenes_recibir[i].id_orden);
+  }
+  let codes = orders.reverse();
+  let rec = codes.toString();
+  let fecha_ini = $('#desde_orders_lab_pend').val();
+  let fecha_fin = $('#hasta_orders_lab_pend').val();
+  $('#inicio_rec').val(fecha_ini);
+  $('#fin_rec').val(fecha_fin);
+  document.getElementById("ordenes_imp").value = rec;
 });
 
 
 function recibirOrdenesLab(){
+
   let count = ordenes_recibir.length;
   if (count==0) {
     Swal.fire({
@@ -156,8 +169,26 @@ function recibirOrdenesLab(){
 }
 
 function confirmarIngresoLab(){
-  
-  let fecha_ini = $("#desde_orders_lab_pend").val();
-  let fecha_fin = $("#hasta_orders_lab_pend").val();
-  window.open('ordenes_recibir_pdf.php?orders='+orders+'&inicio='+fecha_ini+'&fecha_fin='+fecha_fin, '_blank');
+  let usuario = $("#usuario").val();
+  let n_ordenes = ordenes_recibir.length;
+  $.ajax({
+      url:"../ajax/laboratorios.php?op=recibir_ordenes_laboratorio",
+      method:"POST",
+      data : {'arrayRecibidos':JSON.stringify(ordenes_recibir),'usuario':usuario},
+      cache:false,
+      dataType:"json",
+      success:function(data){   
+        $("#ordenes_pendientes_lab").DataTable().ajax.reload();
+        ordenes_recibir = [];
+        $("#modal_ingreso_lab").modal("hide");
+        Swal.fire({
+        position: 'top-center',
+        icon: 'success',
+        title: 'Se han recibido '+n_ordenes+' ordenes',
+        showConfirmButton: true,
+        timer: 50500
+      });
+
+      }
+    });
 }

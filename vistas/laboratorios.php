@@ -60,22 +60,22 @@ $categoria_usuario = $_SESSION["categoria"];
       </div>
 
       <div class="form-row">
-         <div class="col-sm-3"></div>
          <div class="col-sm-2" style="text-align: right;display: flex;align-items: right">
-           <input type="date" class="form-control clear_orden_i" id="desde_orders_lab_pend" placeholder="desde">
+           <input type="date" class="form-control clear_orden_i" id="desde_orders_lab_pend" placeholder="desde" name="inicio">
          </div>
-         <div class="col-sm-2 form-group" style="text-align: right;display: flex;align-items: right">
+         <div class="col-sm-2 form-group" style="text-align: right;display: flex;align-items: right" name="fecha_fin">
           <input type="date" class="form-control clear_orden_i" id="hasta_orders_lab_pend" placeholder="desde">
          </div>
          <div class="col-sm-2 form-group" style="text-align: right;display: flex;align-items: right">
            <button class="btn btn-primary"><i class="fas fa-search" style="cursor:pointer;margin-top: 4px" onClick="listar_ordenes_pend_lab()"></i></button>
          </div>
-         <div class="col-sm-2">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-2 float-right">
          <button class="btn btn-info" onClick="recibirOrdenesLab();"><i class="fas fa-download"></i> Recibir</button>
          </div>
-       </div>
-
-        <table width="100%" class="table-hover table-bordered" id="ordenes_pendientes_lab"  data-order='[[ 0, "desc" ]]'>        
+       </div> 
+        <table width="100%" class="table-hover table-bordered" id="ordenes_pendientes_lab"  data-order='[[ 0, "desc" ]]'> 
+              
          <thead class="style_th bg-dark" style="color: white">
            <th>ID</th>
            <th>Codigo</th>
@@ -96,7 +96,7 @@ $categoria_usuario = $_SESSION["categoria"];
   <input type="hidden" value="<?php echo $categoria_usuario;?>" id="cat_users">
 
    <!--Modal Imagen Aro-->
-   <div class="modal" id="modal_recibir_aros">
+   <div class="modal" id="imagen_aro_orden">
     <div class="modal-dialog" style="max-width: 55%">
       <div class="modal-content">
       
@@ -121,17 +121,27 @@ $categoria_usuario = $_SESSION["categoria"];
    <!--Modal Ingreso a laboratorio-->
    <div class="modal" id="modal_ingreso_lab" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog" style="max-width: 35%">
-      <div class="modal-content">       
+      <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">ORDENES RECIBIDAS EN LABORATORIO</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>       
         <!-- Modal body -->
         <div class="modal-body">
-          <b><h5 style="font-size: 18px;text-align: center">ORDENES RECIBIDAS EN LABORATORIO</h5></b>
           <b><h5 style="font-size: 14px;text-align: center">Confirmar que recibe <span id="count_select"></span> ordenes.</h5></b>
           
         </div>
         <div class="modal-footer">
-        <button type="button" class="btn btn-danger">Cancelar</button>
-        <button type="button" class="btn btn-primary" onClick='confirmarIngresoLab();'><i class="fas fa-print"></i> Recibir</button>
-      </div>        
+        <form action="ordenes_recibir_pdf.php"  method="post" target="_blank">
+          <input type="hidden" id="ordenes_imp" name="orders" value="">
+          <input type="hidden" id="inicio_rec" name="inicio">
+          <input type="hidden" id="fin_rec" name="fin">
+          <button type="submit" class="btn btn-info" onClick="confirmarIngresoLab();"> Recibir</button>
+        </form>
+        
+      </div>       
    
       </div>
     </div>

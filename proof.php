@@ -1,17 +1,19 @@
-<?php
-
-/*$arreglo =["0909202131", "0909202130", "0909202129", "0909202128", "0909202126", "0909202125", "0909202124", "0909202123", "0909202122", "0909202121", "0909202120", "0909202119", "0909202118", "0909202117", "0909202116", "0909202115", "0909202114", "0909202113", "0909202112", "0909202111", "0909202110", "090920219", "090920218", "090920217", "090920216", "090920215", "090920214", "090920213", "090920212", "090920211", "08092021167", "08092021166"];
-*/
-
-
-for ($i = 0; $i >= (-4);$i = $i - 0.25) {
-
-		echo $i."<br>";	
-
-}
-
-
-echo "0101";
-
-?>
-
+<html>
+<head>
+<title>test page</title>
+<script type="text/javascript">
+var submitJArray = function() {
+var jArray = [ "One", "Two", "Three"];
+   document.getElementById("hiddenF").value = jArray;
+   };</script>
+</head>
+<body>
+<form id="testform" action="received.php" method="post" onsubmit="return submitJArray();">
+<div>
+<input type="hidden" id="hiddenF" name="hiddenF" value="">
+Dummy Field: <input type="text" id="txt" name="txt" value="" size="30"><br><br>
+<input type="submit" value="submit">
+</div>
+</form>
+</body>
+</html>

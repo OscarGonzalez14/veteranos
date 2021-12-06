@@ -7,8 +7,10 @@ require_once('../modelos/Reporteria.php');
 
 $reporteria= new Reporteria;
 
-$codigos = $_GET["orders"];
+$codigos = $_POST["orders"];
+//print_r($codigos); exit();
 $array_codigos=explode(",", $codigos);
+
 ?>
 
 <html>
@@ -39,7 +41,7 @@ $array_codigos=explode(",", $codigos);
   }
 </style>
 	<body>
-	<h5 style="font-size: 14px;text-align: center;">ORDENES RECIBIDAS DEL <?php echo date("d-m-Y",strtotime($_GET["inicio"]))." AL ".date("d-m-Y",strtotime($_GET["fecha_fin"]));?></h5>
+	 <h5 style="font-size: 14px;text-align: center;">ORDENES RECIBIDAS DEL <?php echo date("d-m-Y",strtotime($_POST["inicio"]))." AL ".date("d-m-Y",strtotime($_POST["fin"]));?></h5>
 		<table width="100%" class='table2' style="font-size: 9px;text-transform: uppercase;">
 			<tr style="text-align: center; background: #29364e;color:white">
             	<th>Codigo</th>
@@ -52,21 +54,21 @@ $array_codigos=explode(",", $codigos);
             	<th>Tipo lente</th>          
             </tr>
             <tbody>
-			<?php
-			foreach($array_codigos as $value){
+
+		<?php
+               foreach($array_codigos as $value){
 				$data = $reporteria->get_ordenes_recibir_lab($value);
 				foreach ($data as $key) {
-					echo "<tr>";
-                    	echo "<td class='stilot1'>".$key['codigo']."</td>";
-                    	echo "<td class='stilot1'>".$key['fecha']."</td>";
-                    	echo "<td class='stilot1'>".$key['paciente']."</td>";
-                    	echo "<td class='stilot1'>".$key['vertical_aro']."</td>";
-                    	echo "<td class='stilot1'>".$key['horizontal_aro']."</td>";
-                    	echo "<td class='stilot1'>".$key['color_frente']."</td>";
-                    	echo "<td class='stilot1'>".$key['color_varilla']."</td>";
-                    	echo "<td class='stilot1'>".$key['tipo_lente']."</td>";
-
-					echo "</tr>";
+				    echo "<tr>";
+	            	echo "<td class='stilot1'>".$key['codigo']."</td>";
+	            	echo "<td class='stilot1'>".date("d-m-Y",strtotime($key['fecha']))."</td>";
+	            	echo "<td class='stilot1'>".$key['paciente']."</td>";
+	            	echo "<td class='stilot1'>".$key['vertical_aro']."</td>";
+	            	echo "<td class='stilot1'>".$key['horizontal_aro']."</td>";
+	            	echo "<td class='stilot1'>".$key['color_frente']."</td>";
+	            	echo "<td class='stilot1'>".$key['color_varilla']."</td>";
+	            	echo "<td class='stilot1'>".$key['tipo_lente']."</td>";
+				    echo "</tr>";
 				}
 			}
 			?>
