@@ -44,22 +44,11 @@ $categoria_usuario = $_SESSION["categoria"];
 
       <?php include 'ordenes/header_status_lab.php'; ?>
 
-      <div class="form-row">
-         <div class="col-sm-2" style="text-align: right;display: flex;align-items: right">
-           <input type="date" class="form-control clear_orden_i" id="desde_orders_lab_pend" placeholder="desde" name="inicio">
+        <div class="col-sm-2 float-right" style="margin-bottom: 5px !important">
+         <button class="btn btn-success" onClick="recibirOrdenesLab();"><i class="fas fa-clipboard-check"></i> Enviar</button>
          </div>
-         <div class="col-sm-2 form-group" style="text-align: right;display: flex;align-items: right" name="fecha_fin">
-          <input type="date" class="form-control clear_orden_i" id="hasta_orders_lab_pend" placeholder="desde">
-         </div>
-         <div class="col-sm-2 form-group" style="text-align: right;display: flex;align-items: right">
-           <button class="btn btn-success"><i class="fas fa-search" style="cursor:pointer;margin-top: 4px" onClick="listar_ordenes_pend_lab()"></i> Filtrar</button>
-         </div>
-        <div class="col-sm-3"></div>
-        <div class="col-sm-2 float-right">
-         <button class="btn btn-info" onClick="recibirOrdenesLab();"><i class="fas fa-download"></i> Recibir</button>
-         </div>
-       </div> 
-        <table width="100%" class="table-hover table-bordered" id="ordenes_pendientes_lab"  data-order='[[ 0, "desc" ]]'> 
+
+        <table width="100%" class="table-hover table-bordered" id="ordenes_procesando_lab"  data-order='[[ 0, "desc" ]]'> 
               
          <thead class="style_th bg-dark" style="color: white">
            <th>ID</th>

@@ -42,9 +42,18 @@ require_once("../config/conexion.php");
       $sql->bindValue(5, $destino);
       $sql->execute();
     }
-
-
-
   }
 
+  public function get_ordenes_procesando_lab(){
+    $conectar= parent::conexion();
+    parent::set_names();
+    $sql= "select*from orden_lab where estado_aro = 2 order by id_orden DESC;";
+    $sql=$conectar->prepare($sql);
+    $sql->execute();
+    return $resultado= $sql->fetchAll(PDO::FETCH_ASSOC);
   }
+
+}
+
+/***************** REPORTERIA LABORATORIO **********************************
+select o.paciente,o.estado,o.tipo_lente,o.fecha as fechaexp,a.fecha,a.tipo_accion,a.observaciones from orden_lab as o inner join acciones_orden as a on a.codigo=o.codigo where a.fecha like "%06-12-2021%"*/
