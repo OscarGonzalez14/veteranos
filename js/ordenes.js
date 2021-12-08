@@ -114,6 +114,7 @@ function create_barcode(){
 //window.onkeydown= space_guardar_orden;
 
 function guardar_orden(){ 
+
   let categoria_lente = "";
   //let categoria_lente = $("#categoria_lente").val();
   let validate = $("#validate").val();
@@ -141,6 +142,7 @@ function guardar_orden(){
   let color_varilla = $("#color_varilla").val();
   let color_frente = $("#color_frente").val();
   let tipo_lente = $("input[type='radio'][name='tipo_lente']:checked").val();
+
   if (tipo_lente===undefined) {
         Swal.fire({
         position: 'top-center',
@@ -171,51 +173,22 @@ function guardar_orden(){
   let avfinal_oi= $("#avfinal_oi").val();
   let telefono = $("#telef_pac").val();
 
-
- if(paciente==""){
-    $('#paciente').addClass(' is-invalid');
-      alerts("warning");
-      return false;
- }else if(fecha_creacion==""){
-    $('#fecha_creacion').addClass(' is-invalid');
-      alerts("warning");
-      return false;
-  }else if(od_pupilar==""){
-      $('#od_pupilar').addClass(' is-invalid');
-      alerts("warning");
-      return false;
-  }else if(oipupilar==""){
-      $('#oipupilar').addClass(' is-invalid');
-      alerts("warning");
-      return false;
-  }else if(odlente==""){
-      $('#odlente').addClass(' is-invalid');
-      alerts("warning");
-      return false;
-  }else if(oilente==""){
-    $('#oilente').addClass(' is-invalid');
-      alerts("warning");
-      return false;
-  }else if(marca_aro_orden==""){
-    $('#marca_aro_orden').addClass(' is-invalid');
-      alerts("warning");
-      return false;
-  }else if(modelo_aro_orden==""){
-    $('#modelo_aro_orden').addClass(' is-invalid');
-      alerts("warning");
-      return false;
-  }else if(horizontal_aro_orden==""){
-    $('#horizontal_aro_orden').addClass(' is-invalid');
-      alerts("warning");
-      return false;
-  }else if(vertical_aro_orden==""){
-    $('#vertical_aro_orden').addClass(' is-invalid');
-      alerts("warning");
-      return false;
-  }else if(puente_aro_orden==""){
-    $('#puente_aro_orden').addClass(' is-invalid');
-      alerts("warning");
-      return false;
+  let campos_orden = document.getElementsByClassName('oblig');
+  
+  for (let i = 0; i<campos_orden.length; i++) {
+   if(campos_orden[i].value=="") {
+    let id = campos_orden[i].id;
+    console.log(id);
+    $('#'+id).addClass(' is-invalid');
+    Swal.fire({
+        position: 'top-center',
+        icon: 'error',
+        title: 'Existen campos obligatorios vacios',
+        showConfirmButton: true,
+        timer: 2500
+      });
+    return false;
+   }
   }
   
   if (correlativo_op !="") {
@@ -300,12 +273,6 @@ function verEditar(codigo,paciente){
   $("#validate").val("1");
   let categoria = $("#get_categoria").val();
   
-  /*if(categoria != 3){
-    document.getElementById("buscar_aro").style.display = "none";
-    document.getElementById("mostrar_imagen").style.display = "none";
-  }else if(categoria==1 || categoria==3){
-    document.getElementById("mostrar_imagen").style.display = "flex";
-  }*/
   if (categoria=='a') {
    let disable_inputs = document.getElementsByClassName('rx_f');
     for(i=0;i<disable_inputs.length;i++){
@@ -1364,8 +1331,6 @@ function showTablasEnviadas(){
 
 
 }
-
-
 
 init();
 

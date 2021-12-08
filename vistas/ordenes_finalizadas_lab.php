@@ -43,18 +43,14 @@ $categoria_usuario = $_SESSION["categoria"];
 
       <?php include 'ordenes/header_status_lab.php'; ?>
       <div class="row">
-        <div class="col-sm-10"><h5 style="text-align: center">ORDENES EN PROCESO</h5></div>
-        <div class="col-sm-2 float-right" style="margin-bottom: 5px !important">         
-         <button class="btn btn-success" onClick="recibirOrdenesLab();"><i class="fas fa-clipboard-check"></i> Enviar</button>
-         </div>
+        <div class="col-sm-12"><h5 style="text-align: center">ORDENES FINALIZADAS</h5></div>
       </div>
-        <table width="100%" class="table-hover table-bordered" id="ordenes_procesando_lab"  data-order='[[ 0, "desc" ]]'> 
+        <table width="100%" class="table-hover table-bordered" id="ordenes_finalizadas_lab"  data-order='[[ 0, "desc" ]]'> 
               
          <thead class="style_th bg-dark" style="color: white">
            <th>ID</th>
            <th>Codigo</th>
-           <th>Fecha</th>
-           <th>Recibir</th>
+           <th>Fecha finalizado</th>
            <th>Paciente</th>
            <th>Tipo lente</th>
            <th>Detalles</th>

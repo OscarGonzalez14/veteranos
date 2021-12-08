@@ -18,26 +18,27 @@
              <div class="row">
                <div class="col-sm-5">
                  <label for="" class="etiqueta">Paciente</label>
-                <input type="text" class="form-control clear_orden_i" id="paciente">
+                <input type="text" class="form-control clear_orden_i oblig" id="paciente">
                </div>
                <div class="col-sm-3">
                  <label for="" class="etiqueta">DUI</label>
-                <input type="text" class="form-control clear_orden_i" id="dui_pac">
+                <input type="text" class="form-control clear_orden_i oblig" id="dui_pac">
                </div>
 
               <div class="col-sm-2">
                  <label for="" class="etiqueta">Edad</label>
-                <input type="search" class="form-control clear_orden_i" id="edad_pac">
+                <input type="search" class="form-control clear_orden_i oblig" id="edad_pac">
                </div>
 
               <div class="col-sm-2">
                  <label for="" class="etiqueta">Telef.</label>
-                 <input type="text" class="form-control clear_orden_i" id="telef_pac">
+                 <input type="text" class="form-control clear_orden_i oblig" id="telef_pac">
                </div>
 <!--Hola-->
               <div class="col-sm-4">
                  <label for="" class="etiqueta">Usuario lente</label>
-                <select class="form-control" id="usuario_pac">
+                <select class="form-control oblig" id="usuario_pac">
+                  <option value="">Seleccionar ...</option>
                   <option value="No">No</option>
                   <option value="Si">Si</option>
                 </select>
@@ -45,12 +46,12 @@
 
               <div class="col-sm-5">
                  <label for="" class="etiqueta">Ocupación</label>
-                <input type="text" class="form-control clear_orden_i" id="ocupacion_pac">
+                <input type="text" class="form-control clear_orden_i oblig" id="ocupacion_pac">
                </div>
 
               <div class="col-sm-3">
                  <label for="" class="etiqueta">Fecha exp.</label>
-                <input type="date" class="form-control clear_orden_i" id="fecha_creacion">
+                <input type="date" class="form-control clear_orden_i oblig" id="fecha_creacion">
                </div>
              </div>
             <div class="eight"style="align-items: center">
@@ -96,19 +97,19 @@
                     <tbody>
                       <tr>
                         <td>OD</td>
-                        <td> <input type="text" class="form-control clear_orden_i rx_f"  id="odesferasf"  style="text-align: center"></td>
-                        <td> <input type="text" class="form-control clear_orden_i rx_f"  id="odcilindrosf"  style="text-align: center"></td>
-                        <td> <input type="text" class="form-control clear_orden_i rx_f"  id="odejesf"  style="text-align: center"></td>             
-                       <td> <input type="text" class="form-control clear_orden_i rx_f"  id="oddicionf"  style="text-align: center"></td>
+                        <td> <input type="text" class="form-control clear_orden_i rx_f oblig"  id="odesferasf"  style="text-align: center"></td>
+                        <td> <input type="text" class="form-control clear_orden_i rx_f oblig"  id="odcilindrosf"  style="text-align: center"></td>
+                        <td> <input type="text" class="form-control clear_orden_i rx_f oblig"  id="odejesf"  style="text-align: center"></td>             
+                       <td> <input type="text" class="form-control clear_orden_i rx_f oblig"  id="oddicionf"  style="text-align: center"></td>
               
                       </tr>
                       <tr>
                         <td>OI</td>
-                        <td> <input type="text" class="form-control clear_orden_i rx_f"  id="oiesferasf"   style="text-align: center">                        
+                        <td> <input type="text" class="form-control clear_orden_i rx_f oblig"  id="oiesferasf"   style="text-align: center">                        
                       </td>
-                        <td> <input type="text" class="form-control clear_orden_i rx_f"  id="oicilindrosf"   style="text-align: center"></td>
-                        <td> <input type="text" class="form-control clear_orden_i rx_f"  id="oiejesf"   style="text-align: center"></td>              
-                        <td> <input type="text" class="form-control clear_orden_i rx_f"  id="oiadicionf"  style="text-align: center"></td>    
+                        <td> <input type="text" class="form-control clear_orden_i rx_f oblig"  id="oicilindrosf"   style="text-align: center"></td>
+                        <td> <input type="text" class="form-control clear_orden_i rx_f oblig"  id="oiejesf"   style="text-align: center"></td>              
+                        <td> <input type="text" class="form-control clear_orden_i rx_f oblig"  id="oiadicionf"  style="text-align: center"></td>    
                       </tr>
                     </tbody>
                   </table>
@@ -125,12 +126,12 @@
 
                   <div class="col-md-6">
                    <label for="od_pupilar" class="etiqueta">OD</label>
-                    <input type="text" class="form-control clear_orden_i" placeholder="mm" id="od_pupilar">
+                    <input type="text" class="form-control clear_orden_i oblig" placeholder="mm" id="od_pupilar">
                   </div>
 
                   <div class="col-md-6">
                    <label for="" class="etiqueta">OI</label>
-                   <input type="text" class="form-control clear_orden_i" placeholder="mm" id="oipupilar">
+                   <input type="text" class="form-control clear_orden_i oblig" placeholder="mm" id="oipupilar">
                   </div>
 
                  </div><!--FIN Form Row-->
@@ -149,12 +150,12 @@
 
                   <div class="col-md-6">
                     <label for="" class="etiqueta">OD</label>
-                      <input type="text" class="form-control clear_orden_i" placeholder="mm" id="odlente">
+                      <input type="text" class="form-control clear_orden_i oblig" placeholder="mm" id="odlente">
                   </div>
 
                 <div class="col-md-6">
                     <label for="" class="etiqueta">OI</label>
-                      <input type="text" class="form-control clear_orden_i" placeholder="mm" id="oilente">
+                      <input type="text" class="form-control clear_orden_i oblig" placeholder="mm" id="oilente">
                 </div>
 
                  </div><!--FIN Form Row-->
@@ -172,16 +173,16 @@
                   <div class="col-md-6">
                     <label for="" class="etiqueta" style="text-align: center">AVsc</label>
                     <div style="display: flex">
-                      <input type="text" class="form-control clear_orden_i" placeholder="OD" id="avsc">
-                      <input type="text" class="form-control clear_orden_i" placeholder="OI" id="avsc_oi">
+                      <input type="text" class="form-control clear_orden_i oblig" placeholder="OD" id="avsc">
+                      <input type="text" class="form-control clear_orden_i oblig" placeholder="OI" id="avsc_oi">
                     </div>
                   </div>
 
                 <div class="col-md-6">
                   <label for="" class="etiqueta" style="text-align: center">AVfinal</label>
                    <div style="display: flex">
-                    <input type="text" class="form-control clear_orden_i" placeholder="OD" id="avfinal">
-                    <input type="text" class="form-control clear_orden_i" placeholder="OI" id="avfinal_oi">
+                    <input type="text" class="form-control clear_orden_i oblig" placeholder="OD" id="avfinal">
+                    <input type="text" class="form-control clear_orden_i oblig" placeholder="OI" id="avfinal_oi">
                 </div>
                 </div>
 
@@ -217,23 +218,23 @@
 
               <div class="form-group col-sm-3">
                 <label for="" class="etiqueta">Marca</label>
-                <input type="text" class="form-control clear_orden_i" id="marca_aro_orden" readonly="">
+                <input type="text" class="form-control clear_orden_i oblig" id="marca_aro_orden" readonly="">
               </div>
 
 
               <div class="form-group col-sm-2">
                 <label for="" class="etiqueta">Horizontal</label>
-                <input type="text" class="form-control clear_orden_i" id="horizontal_aro_orden" readonly="">
+                <input type="text" class="form-control clear_orden_i oblig" id="horizontal_aro_orden" readonly="">
               </div>
 
               <div class="form-group col-sm-2">
                   <label for="" class="etiqueta">Vertical</label>
-                  <input type="text" class="form-control clear_orden_i" id="vertical_aro_orden" readonly="">
+                  <input type="text" class="form-control clear_orden_i oblig" id="vertical_aro_orden" readonly="">
               </div>       
 
               <div class="form-group col-sm-2">
                   <label for="" class="etiqueta">Puente</label>
-                  <input type="text" class="form-control clear_orden_i" id="puente_aro_orden" readonly="">
+                  <input type="text" class="form-control clear_orden_i oblig" id="puente_aro_orden" readonly="">
               </div>
 
              </div>   
@@ -245,11 +246,11 @@
             <div class="form-row align-items-center row" style="margin: 4px">
               <div class="form-group col-sm-6">
                 <label for="" class="etiqueta">Varillas</label>
-                <input type="text" class="form-control clear_orden_i" id="color_varilla" placeholder="color varillas" readonly="">
+                <input type="text" class="form-control clear_orden_i oblig" id="color_varilla" placeholder="color varillas" readonly="">
               </div>
               <div class="form-group col-sm-6">
                 <label for="" class="etiqueta">Frente</label>
-                <input type="text" class="form-control clear_orden_i" id="color_frente" placeholder="color frente" readonly="">
+                <input type="text" class="form-control clear_orden_i oblig" id="color_frente" placeholder="color frente" readonly="">
               </div>
             </div>
           </div>
@@ -257,7 +258,7 @@
             </div><!--Fin Div Aros row-->
             <div class="form-group col-sm-12">
               <label for="" class="etiqueta">Observaciones</label>
-              <input type="text" class="form-control clear_orden_i" id="observaciones_orden">
+              <input type="text" class="form-control clear_orden_i oblig" id="observaciones_orden">
             </div>
           <p id="created"></p>
           <input type="hidden" id="codigoOrden" name="codigoOrden">

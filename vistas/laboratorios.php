@@ -115,7 +115,7 @@ $categoria_usuario = $_SESSION["categoria"];
       </div>       
         <!-- Modal body -->
         <div class="modal-body">
-          <b><h5 style="font-size: 14px;text-align: center">Confirmar que recibe <span id="count_select"></span> ordenes.</h5></b>
+          <b><h5 style="font-size: 16px;text-align: center">Confirmar que recibe <span id="count_select"></span> ordenes.</h5></b>
           
         </div>
         <div class="modal-footer">
